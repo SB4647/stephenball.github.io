@@ -2,83 +2,114 @@
 # Hero Section
 --------------------------------------------------------------*/
 .hero {
-  height: 100vh;
-  position: relative;
-  color: #fff;
-
-  
-  .hero-content {
-    text-align: center;
-    position: absolute;
-  }
-
-  .overlay-itro {
-    background-color: rgba(0, 0, 0, 0.6);
-    position: absolute;
-    top: 0;
-    left: 0px;
-    padding: 0;
-    height: 100%;
-    width: 100%;
-    opacity: .9;
-  }
-
-  .hero-title {
+    height: 100vh;
+    position: relative;
     color: #fff;
-    font-weight: 600;
-    font-size: 3rem;
 
-    @media (min-width: 768px) {
-      font-size: 4.5rem;
+    .hero-content {
+        text-align: center;
+        position: absolute;
     }
-  }
 
-  .hero-subtitle {
-    font-size: 1.5rem;
-    font-weight: 600;
-
-    @media (min-width: 768px) {
-      font-size: 2.5rem;
+    .overlay-itro {
+        background-color: rgba(0, 0, 0, 0.6);
+        position: absolute;
+        top: 0;
+        left: 0px;
+        padding: 0;
+        height: 100%;
+        width: 100%;
+        opacity: 0.9;
     }
-  }
 
-  .text-slider-items {
-    display: none;
-  }
+    .hero-title {
+        color: #fff;
+        font-weight: 600;
+        font-size: 3rem;
+
+        @media (min-width: 768px) {
+            font-size: 4.5rem;
+        }
+    }
+
+    .hero-subtitle {
+        font-size: 1.5rem;
+        font-weight: 600;
+
+        @media (min-width: 768px) {
+            font-size: 2.5rem;
+        }
+    }
+
+    .text-slider-items {
+        display: none;
+    }
 }
 
 .hero-single {
-  height: 350px;
+    height: 350px;
 
-  .hero-content {
-    margin-top: 30px;
-  }
-
-  .hero-title {
-    text-transform: uppercase;
-    font-size: 3rem;
-
-    @media (min-width: 768px) {
-      font-size: 3.5rem;
-    }
-  }
-
-  .breadcrumb {
-    background-color: transparent;
-    color: $primary;
-
-    .breadcrumb-item {
-      &:before {
-        color: $primary-light;
-      }
-
-      &.active {
-        color: $primary-light;
-      }
+    .hero-content {
+        margin-top: 30px;
     }
 
-    a {
-      color: #fff;
+    .hero-title {
+        text-transform: uppercase;
+        font-size: 3rem;
+
+        @media (min-width: 768px) {
+            font-size: 3.5rem;
+        }
     }
-  }
+
+    .breadcrumb {
+        background-color: transparent;
+        color: $primary;
+
+        .breadcrumb-item {
+            &:before {
+                color: $primary-light;
+            }
+
+            &.active {
+                color: $primary-light;
+            }
+        }
+    }
+}
+
+/*--------------------------------------------------------------
+# Hero Dust Animation
+--------------------------------------------------------------*/
+.particle {
+    position: absolute;
+    border-radius: 50%;
+}
+
+@for $i from 1 through 30 {
+    @keyframes particle-animation-#{$i} {
+        100% {
+            transform: translate3d(
+                (random(90) * 1vw),
+                (random(90) * 1vh),
+                (random(100) * 1px)
+            );
+        }
+    }
+
+    .particle:nth-child(#{$i}) {
+        animation: particle-animation-#{$i} 60s infinite;
+        $size: random(5) + 5 + px;
+        opacity: random(100) / 100;
+        height: $size;
+        width: $size;
+        animation-delay: -$i * 0.2s;
+        transform: translate3d(
+            (random(90) * 1vw),
+            (random(90) * 1vh),
+            (random(100) * 1px)
+        );
+        background: $primary;
+        //  background: hsl(random(360), 70%, 50%);
+    }
 }
