@@ -57,12 +57,14 @@
         i {
             line-height: 0;
             font-size: 40px;
+            color: black;
         }
 
         &:hover {
-            .iconify {
+            .iconify,
+            .ico-img {
                 transition: all 500ms ease;
-                color: #fff;
+                color: black;
             }
         }
     }
